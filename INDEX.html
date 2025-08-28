@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niger State Ministry of Rural & Community Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, #2E8B57, #228B22);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #2E8B57;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46, 139, 87, 0.8), rgba(34, 139, 34, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23228B22" width="1200" height="600"/><circle fill="%232E8B57" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%2332CD32" opacity="0.2" cx="800" cy="300" r="150"/><circle fill="%23228B22" opacity="0.4" cx="1000" cy="100" r="80"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: #FFD700;
+            color: #2E8B57;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2E8B57;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2E8B57;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2E8B57, #32CD32);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2E8B57, #32CD32);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* News Section */
+        .news {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .news-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, #2E8B57, #32CD32);
+            position: relative;
+        }
+
+        .news-date {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #2E8B57;
+            font-weight: bold;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .news-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2E8B57, #228B22);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 0 2rem;
+        }
+
+        .contact-info {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: slideInRight 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #32CD32;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Dynamic Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Interactive hover effects */
+        .interactive-bg {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+         .team-section {
+            margin-top: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2E8B57;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2E8B57;
+            margin-bottom: 1rem;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-position {
+            font-size: 1rem;
+            color: #2E8B57;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .circular-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><img src = "niger.jpg" height = "35px" width = "30px"></div>
+                <div>
+                    <h2>Niger State</h2>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Ministry of Rural & Community Development</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements">
+            <div class="floating-element" style="left: 10%; width: 20px; height: 20px; animation-delay: 0s;"></div>
+            <div class="floating-element" style="left: 20%; width: 30px; height: 30px; animation-delay: 5s;"></div>
+            <div class="floating-element" style="left: 70%; width: 25px; height: 25px; animation-delay: 10s;"></div>
+            <div class="floating-element" style="left: 80%; width: 35px; height: 35px; animation-delay: 15s;"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Empowering Rural Communities</h1>
+            <p>Building sustainable development through innovative programs, community engagement, and strategic partnerships across Niger State</p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn btn-primary">Our Services</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+        <div class="interactive-bg" id="cursor-effect"></div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <span class="stat-number" data-target="150">0</span>
+                <span class="stat-label">Communities Served</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" data-target="75">0</span>
+                <span class="stat-label">Active Projects</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" data-target="500000">0</span>
+                <span class="stat-label">Beneficiaries</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" data-target="25">0</span>
+                <span class="stat-label">Local Governments</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">Our Services</div>
+        <div class="section-subtitle">Comprehensive development programs designed to transform rural communities and improve quality of life</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌱</div>
+                <h3>Agricultural Development</h3>
+                <p>Supporting farmers with modern techniques, equipment, and training programs to increase productivity and income.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏫</div>
+                <h3>Education & Training</h3>
+                <p>Providing educational infrastructure, vocational training, and capacity building programs for community members.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Water & Sanitation</h3>
+                <p>Installing boreholes, water treatment facilities, and sanitation systems to improve health outcomes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>Healthcare Services</h3>
+                <p>Establishing primary healthcare centers and mobile clinics to ensure accessible medical care.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛣️</div>
+                <h3>Infrastructure</h3>
+                <p>Building roads, bridges, and communication networks to connect rural communities.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Energy Solutions</h3>
+                <p>Implementing solar power systems and energy-efficient solutions for sustainable development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" id="news">
+        <div class="section-title">Latest News & Updates</div>
+        <div class="section-subtitle">Stay informed about our latest initiatives, achievements, and community developments</div>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-image">
+                    <div class="news-date">Aug 25, 2025</div>
+                </div>
+                <div class="news-content">
+                    <h3>New Water Project Launched in Kontagora</h3>
+                    <p>The Ministry successfully launched a new water project providing clean water access to over 10,000 residents in Kontagora Local Government Area.</p>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="news-image">
+                    <div class="news-date">Aug 20, 2025</div>
+                </div>
+                <div class="news-content">
+                    <h3>Agricultural Training Program Graduation</h3>
+                    <p>200 farmers graduated from our intensive agricultural training program, equipped with modern farming techniques and business skills.</p>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="news-image">
+                    <div class="news-date">Aug 15, 2025</div>
+                </div>
+                <div class="news-content">
+                    <h3>Solar Power Initiative Expands</h3>
+                    <p>Our solar power initiative now covers 15 communities, providing sustainable electricity to rural schools and healthcare centers.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+<div class="team-section">
+        <h2 class="section-title">Our Leadership Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="HON.jpg" alt="Director" class="team-photo">
+                <div class="member-name">Hon. Phalal Bako</div>
+                <div class="member-position">Commissioner Ministry of Rural and Community Development</div>
+                <div class="member-bio">Leading rural transformation initiatives across Niger State with 8+ years of experience in community development.</div>
+            </div>
+
+            <div class="team-member">
+                <img src="perm.jpg" alt="Deputy Director" class="team-photo">
+                <div class="member-name">Dr. Yakubu Mohammed Bello PhD min</div>
+                <div class="member-position">Permanent Secretary</div>
+                <div class="member-bio">Overseeing community engagement programs and women empowerment initiatives throughout the state.</div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p style="margin-bottom: 2rem;">We're here to serve and support rural communities across Niger State. Reach out to us for inquiries, partnerships, or project proposals.</p>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4>📍 Address:</h4>
+                    <p>Ministry of Rural & Community Development<br>
+                    Abdulkareem Lafene Secretariate Opp. House Assemble Minna Niger State<br>
+                    Niger State, Nigeria</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4>📞 Contact:</h4>
+                    <p>Phone: +234 0801 000 0000<br>
+                    Email: info@nigerruraldev.gov.ng</p>
+                </div>
+                
+                <div>
+                    <h4>🕒 Office Hours:</h4>
+                    <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#accessibility">Accessibility</a>
+                <a href="#sitemap">Site Map</a>
+            </div>
+            <p>&copy; 2025 Niger State Ministry of Rural & Community Development. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">Committed to sustainable rural development and community empowerment.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animated counters for stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const increment = target / 100;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 20);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stat-number')) {
+                        animateCounter(entry.target);
+                    }
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe stat numbers
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            observer.observe(stat);
+        });
+
+        // Interactive cursor effect for hero section
+        const hero = document.querySelector('.hero');
+        const cursorEffect = document.getElementById('cursor-effect');
+
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            cursorEffect.style.left = x - 50 + 'px';
+            cursorEffect.style.top = y - 50 + 'px';
+        });
+
+        // Form submission handling
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Dynamic header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(46, 139, 87, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2E8B57, #228B22)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
